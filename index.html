@@ -81,6 +81,51 @@
           <source src="images/r2r.mp4" type="video/mp4">
           Your browser does not support the video tag.
           </video></div>
+          <img src='images/Tea.png' width=100%>
+        </div>
+        <script type="text/javascript">
+          function r2r_start() {
+            document.getElementById('r2r_image').style.opacity = "1";
+          }
+
+          function r2r_stop() {
+            document.getElementById('r2r_image').style.opacity = "0";
+          }
+          r2r_stop()
+        </script>
+      </td>
+      <td style="padding:8px;width:80%;vertical-align:middle">
+	<a href="">
+          <span class="papertitle">(Submitting)YOLOv8-SIEMF: A Visual Model Based on Sub-models Integral Evaluation and Muti-objective Filter</span>
+        </a>
+        <br>
+        <strong>Donghao Cao</strong>, Fuchen Huang, Zhengxuan Wei, Jingyi Zhu, Jingsi Lyu 
+        <br>
+        <em>IEEE Access</em>
+        <br>
+        <p></p>
+        <p>
+		To address the challenges of missed detection and misdetection in tea bud 
+		recognition tasks under complex environments, this paper proposes YOLOv8-SIEMF, 
+		a novel detection model integrating Sub-models Integral Evaluation (SIE) and Multi-objective 
+		Filtering (MF). First, we design a hierarchical detection framework where different sub-models 
+		process diverse resolution levels of input images to extract complementary features. An evaluation 
+		mechanism is developed to comprehensively fuse the outputs of sub-models by considering detection 
+		confidence, box overlap, and image sharpness. Meanwhile, a multi-objective filtering module is 
+		introduced to enhance the model’s sensitivity to multi-target clusters and improve edge sharpness 
+		in grayscale space, which effectively reduces redundant or invalid detection. Experimental results 
+		on a self-built dataset demonstrate that the proposed model outperforms mainstream YOLOv8 variants 
+		in terms of precision and recall, achieving superior performance in recognizing fine-grained tea buds under real-field conditions
+        </p>
+      </td>
+    </tr>
+    <tr onmouseout="r2r_stop()" onmouseover="r2r_start()">
+      <td style="padding:16px;width:20%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='r2r_image'><video  width=100% muted autoplay loop>
+          <source src="images/r2r.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          </video></div>
           <img src='images/r2r.png' width=100%>
         </div>
         <script type="text/javascript">
