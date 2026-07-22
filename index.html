@@ -421,159 +421,6 @@
             color: var(--text-light);
         }
 
-        /* ========== Work Experience ========== */
-        .work-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            position: relative;
-        }
-
-        .work-timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #667eea, #764ba2, #4facfe);
-            opacity: 0.3;
-        }
-
-        .work-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            margin-left: 60px;
-            position: relative;
-            transition: all 0.4s ease;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .work-card:hover {
-            transform: translateX(8px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .work-card::before {
-            content: '';
-            position: absolute;
-            left: -46px;
-            top: 36px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--primary-gradient);
-            border: 4px solid var(--bg-light);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-        }
-
-        .work-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .work-company {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .work-date {
-            font-size: 13px;
-            color: #667eea;
-            font-weight: 600;
-            padding: 4px 14px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 20px;
-            white-space: nowrap;
-        }
-
-        .work-position {
-            font-size: 15px;
-            color: var(--text-secondary);
-            font-weight: 600;
-            margin-bottom: 16px;
-            font-style: italic;
-        }
-
-        .work-location {
-            font-size: 13px;
-            color: var(--text-light);
-            margin-bottom: 14px;
-        }
-
-        .work-desc ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .work-desc li {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            padding-left: 20px;
-            position: relative;
-            margin-bottom: 8px;
-        }
-
-        .work-desc li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .work-card {
-            display: grid;
-            grid-template-columns: 80px 1fr;
-            gap: 24px;
-            align-items: start;
-        }
-
-        .work-logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            flex-shrink: 0;
-        }
-
-        .work-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 8px;
-        }
-
-        /* Project logo */
-        .project-logo-img {
-            max-height: 120px;
-            max-width: 80%;
-            object-fit: contain;
-            opacity: 0.95;
-        }
-
-        .project-role {
-            font-size: 13px;
-            color: var(--text-light);
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
         /* ========== Publications ========== */
         .pub-list {
             display: flex;
@@ -1225,9 +1072,8 @@
     <!-- Navigation -->
     <nav class="navbar">
         <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#projects">Projects</a>
         <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
         <a href="#awards">Awards</a>
         <a href="#activities">Activities</a>
     </nav>
@@ -1258,12 +1104,12 @@
                     <div class="avatar-wrapper">
                         <div class="avatar-ring"></div>
                         <div class="avatar-img">
-                            <a href="images/Donghao.jpg">
-                                <img src="images/Donghao.jpg" alt="Donghao Cao">
+                            <a href="images/Donghao_new.png">
+                                <img src="images/Donghao_new.png" alt="Donghao Cao">
                             </a>
                         </div>
                         <div class="avatar-badge">
-                            GPA <span class="score">90.43</span>
+                            HI <span class="score">THERE</span>
                         </div>
                     </div>
                 </div>
@@ -1299,131 +1145,6 @@
                     <div class="interest-icon">📐</div>
                     <h4>Mathematical Modeling</h4>
                     <p>Optimization algorithms, simulation, data analysis</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work Experience -->
-    <section id="work">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-label">Career Experience</span>
-                <h2 class="section-title">Work Experience</h2>
-                <p class="section-subtitle">Research and industry internships in control engineering & product R&D</p>
-            </div>
-            <div class="work-timeline">
-                <!-- Work 1: Tsinghua University -->
-                <div class="work-card fade-in">
-                    <div class="work-logo">
-                        <img src="images/tsinghua-logo.png" alt="Tsinghua University">
-                    </div>
-                    <div class="work-content">
-                        <div class="work-header">
-                            <h3 class="work-company">Institute of Mechanical and Electronic Engineering, Tsinghua University</h3>
-                            <span class="work-date">Sept. 2024 – April 2025</span>
-                        </div>
-                        <p class="work-position">Research Assistant</p>
-                        <p class="work-location">📍 Beijing, China</p>
-                        <div class="work-desc">
-                            <ul>
-                                <li>Implemented Smith predictor-sliding mode control with PSO algorithm on Panasonic A5 electric cylinder system using dSPACE platform, significantly reducing overshoot and settling time</li>
-                                <li>Tested the operating voltage range of the electric cylinder, optimized its tracking performance, and reduced the delay to 0.2 seconds</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Work 2: Ingersoll-Rand -->
-                <div class="work-card fade-in">
-                    <div class="work-logo">
-                        <img src="images/ingersoll-rand-logo.png" alt="Ingersoll-Rand">
-                    </div>
-                    <div class="work-content">
-                        <div class="work-header">
-                            <h3 class="work-company">Ingersoll-Rand (China) Industrial Equipment Manufacturing Co., Ltd.</h3>
-                            <span class="work-date">Oct. 2025 – Feb. 2026</span>
-                        </div>
-                        <p class="work-position">Product R&D Intern</p>
-                        <p class="work-location">📍 Wujiang, China</p>
-                        <div class="work-desc">
-                            <ul>
-                                <li>Assisted engineers with product prototype research, system identification and control system design to match various equipment parameter standards</li>
-                                <li>Tracked R&D progress, communicated technical requirements, sorted out development faults and reported hidden technical risks to product supervisors</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Academic Projects -->
-    <section id="projects">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-label">Hands-on Experience</span>
-                <h2 class="section-title">Academic Projects</h2>
-                <p class="section-subtitle">Led and contributed to diverse engineering research projects</p>
-            </div>
-            <div class="projects-grid">
-                <!-- Project 1: RoboCup Home Service Robot -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/robocup-logo.png" alt="RoboCup Project" class="project-logo-img">
-                    </div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="tag">YOLOv8</span>
-                            <span class="tag">Computer Vision</span>
-                            <span class="tag">Robotics</span>
-                            <span class="tag">Model Compression</span>
-                        </div>
-                        <h3>RoboCup Home Service Robot Vision System</h3>
-                        <p class="project-role">Vision Team Leader & Hardware Engineer · Mar. 2025 – May 2025</p>
-                        <p class="project-desc">
-                            Modeled general household scenarios and accomplished a series of motion tasks including guest identification and object handling. Won National First Prize in RoboCup China leading computer vision development with YOLOv8 model compression, maintaining 94% object detection accuracy for autonomous household tasks.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project 2: Terraced Tea Harvest Robot -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/tea-robot-logo.png" alt="Tea Harvest Robot" class="project-logo-img">
-                    </div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="tag">YOLOv8</span>
-                            <span class="tag">Robotics</span>
-                            <span class="tag">Agriculture AI</span>
-                            <span class="tag">3D Modeling</span>
-                        </div>
-                        <h3>Terraced Tea Autonomous Harvest RobotCar</h3>
-                        <p class="project-role">Project Leader · Mar. 2024 – Oct. 2025 · National Innovation Program</p>
-                        <p class="project-desc">
-                            Developed intelligent tea bud picking system using improved Mamba-YOLOv8 vision model with custom dataset for crop recognition. Designed collaborative robotic arm end-effector, and conducted 3D terrain modeling for complex agricultural terrains. Long-term collaborated with Universiti Teknologi Malaysia faculty and students.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project 3: Oxford Object Detection -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="images/oxford-logo.png" alt="Oxford Project" class="project-logo-img">
-                    </div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="tag">Computer Vision</span>
-                            <span class="tag">Deep Learning</span>
-                            <span class="tag">Oxford</span>
-                        </div>
-                        <h3>Classical & Deep Learning Object Detection</h3>
-                        <p class="project-role">Feb. 2025 – May 2025 · University of Oxford</p>
-                        <p class="project-desc">
-                            Project-based course covering sliding window detectors with hand-crafted features and CNN-based deep learning methods. Implemented detection of people, furniture, and everyday items with evaluation metrics on train/val/test sets.
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1472,6 +1193,94 @@
                         <p class="pub-venue">AIVRV, 2024</p>
                         <p class="pub-abstract">
                             This study presents a uniformly spaced recursive model to determine position and velocity of mechanical products at various locations and time intervals on an assembly line. Assuming constant speed, initial product positions are calculated by arc length at different intervals. A node position model based on the Cosine Rule recursively determines the front handle center of each subsequent product relative to the preceding product's rear handle center, enabling precise visualization and optimization of assembly line dynamics.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Projects -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Hands-on Experience</span>
+                <h2 class="section-title">Academic Projects</h2>
+                <p class="section-subtitle">Led and contributed to diverse engineering research projects</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <span class="project-icon">🎯</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="tag">Control</span>
+                            <span class="tag">PSO</span>
+                            <span class="tag">dSPACE</span>
+                        </div>
+                        <h3>Dual-DOF Controller based on PSO & Smith Prediction</h3>
+                        <p class="project-tutor">Tutor: Researcher Ze Wang, Tsinghua University</p>
+                        <p class="project-desc">
+                            Based on the dSPACE controlled dual-degree-of-freedom platform, PSO algorithm optimizes sine/cosine signal response of sliding mode control. Smith predictor's dead-time control is optimally improved for enhanced system performance.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <span class="project-icon">🔍</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Oxford</span>
+                        </div>
+                        <h3>Object Detection: Classical & Deep Learning Methods</h3>
+                        <p class="project-tutor">Tutor: Dr. Abhishek Dutta, VGG, University of Oxford · 2025.02-2025.05</p>
+                        <p class="project-desc">
+                            Project-based course covering sliding window detectors with hand-crafted features and CNN-based deep learning methods. Implemented detection of people, furniture, and everyday items with evaluation metrics on train/val/test sets.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <span class="project-icon">🌱</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="tag">STM32</span>
+                            <span class="tag">Embedded</span>
+                            <span class="tag">Mechanical Design</span>
+                        </div>
+                        <h3>Mobile Plant Growth Factor Measuring Device</h3>
+                        <p class="project-tutor">Tutor: Prof. Liang Yin, BUCT · 2023.03-2023.12</p>
+                        <p class="project-desc">
+                            Led team to develop a remotely controlled vehicle with sensor rod for soil physicochemical property measurement. Integrated electronics, mechanical design, and control. Earned 6th place in the university's highest-level competition track.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <span class="project-icon">🍵</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="tag">YOLOv8</span>
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Agriculture AI</span>
+                        </div>
+                        <h3>Autonomous Harvesting Robot for Terraced Terrain</h3>
+                        <p class="project-tutor">Tutor: Lecturer Yang Yuan, BUCT · 2024.04-2025.10 (Expected)</p>
+                        <p class="project-desc">
+                            Leverages YOLOv8 and sensor technologies for low-cost, selective tea bud harvesting. System autonomously distinguishes tender from mature leaves with a specialized manipulator for precise, swift picking with minimal bud damage.
                         </p>
                     </div>
                 </div>
