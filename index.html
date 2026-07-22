@@ -2,668 +2,1685 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Donghao Cao | Academic Homepage</title>
-    <meta name="author" content="Donghao Cao">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donghao Cao | Mechanical Engineering & AI Researcher</title>
     <link rel="shortcut icon" href="images/donghao/donghao.ico" type="image/x-icon">
     <style>
-        /* 全局重置 */
+        /* ========== Reset & Base ========== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-gradient: linear-gradient(135deg, #0c0c3d 0%, #1a1a5e 50%, #2d1b69 100%);
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-light: #7a7a9a;
+            --bg-light: #f8f9ff;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --shadow-sm: 0 2px 10px rgba(102, 126, 234, 0.08);
+            --shadow-md: 0 8px 30px rgba(102, 126, 234, 0.12);
+            --shadow-lg: 0 20px 60px rgba(102, 126, 234, 0.18);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
-            font-family: "Times New Roman", Georgia, serif;
-            color: #111827;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
             line-height: 1.7;
             overflow-x: hidden;
-            position: relative;
-            background: #f8faff;
         }
-        /* 流动渐变光斑背景动画 */
-        .bg-blob {
+
+        /* ========== Decorative Background ========== */
+        .bg-decoration {
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
             z-index: -1;
-            filter: blur(90px);
-            opacity: 0.55;
-            animation: blob-float 18s infinite ease-in-out;
+            overflow: hidden;
         }
-        .blob1 {
-            width: 420px;
-            height: 420px;
-            background: linear-gradient(135deg, #60a5fa, #3b82f6);
-            top: -120px;
+
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            top: -200px;
+            right: -150px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            bottom: 10%;
             left: -100px;
+            animation: float 25s ease-in-out infinite reverse;
         }
-        .blob2 {
-            width: 360px;
-            height: 360px;
-            background: linear-gradient(135deg, #c084fc, #a855f7);
-            top: 40%;
-            right: -80px;
-            animation-delay: -6s;
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            top: 50%;
+            right: 10%;
+            opacity: 0.2;
+            animation: float 18s ease-in-out infinite;
         }
-        .blob3 {
-            width: 320px;
-            height: 320px;
-            background: linear-gradient(135deg, #fdba74, #fb923c);
-            bottom: -100px;
-            left: 30%;
-            animation-delay: -12s;
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
         }
-        @keyframes blob-float {
-            0% { transform: translate(0,0) scale(1); }
-            33% { transform: translate(40px,-60px) scale(1.08); }
-            66% { transform: translate(-30px,40px) scale(0.94); }
-            100% { transform: translate(0,0) scale(1); }
-        }
-        /* 容器 */
-        .container {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        /* 顶部毛玻璃导航 */
-        nav {
+
+        /* ========== Navigation ========== */
+        .navbar {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255,255,255,0.72);
-            backdrop-filter: blur(12px);
-            border-radius: 999px;
-            padding: 12px 32px;
-            box-shadow: 0 6px 24px rgba(59,130,246,0.12);
-            z-index: 999;
-            border: 1px solid rgba(255,255,255,0.8);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50px;
+            padding: 10px 30px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            gap: 8px;
+            align-items: center;
         }
-        nav a {
+
+        .navbar a {
             text-decoration: none;
-            color: #334155;
-            margin: 0 12px;
-            font-size: 15px;
-            transition: 0.25s;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
-        nav a:hover {
-            color: #2563eb;
+
+        .navbar a:hover {
+            background: var(--primary-gradient);
+            color: white;
         }
-        /* Hero首屏 */
+
+        /* ========== Container ========== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== Hero Section ========== */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             padding-top: 80px;
         }
-        .hero-wrap {
-            display: flex;
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
             align-items: center;
-            gap: 40px;
-            flex-wrap: wrap-reverse;
         }
-        .hero-text {
-            flex: 1;
-            min-width: 320px;
+
+        .hero-text .greeting {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-weight: 500;
         }
-        .hero-avatar-box {
-            width: 34%;
-            min-width: 200px;
-            position: relative;
-        }
-        /* 头像渐变光环 */
-        .avatar-ring {
-            width: 100%;
-            padding: 6px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3b82f6, #a855f7, #fb923c);
-            animation: ring-rotate 7s linear infinite;
-        }
-        @keyframes ring-rotate {
-            100% { transform: rotate(360deg); }
-        }
-        .avatar-ring img {
-            width: 100%;
-            border-radius: 50%;
-            display: block;
-        }
-        .hero-name {
-            font-size: 42px;
-            font-weight: 700;
-            background: linear-gradient(90deg, #2563eb, #9333ea);
+
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 16px;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .hero-desc {
-            font-size: 17px;
-            color: #374151;
-            margin-bottom: 14px;
-        }
-        .gpa-badge {
+
+        .hero-text .title-tag {
             display: inline-block;
-            padding: 4px 14px;
-            background: linear-gradient(90deg,#3b82f6,#60a5fa);
+            padding: 8px 20px;
+            background: var(--primary-gradient);
             color: white;
-            border-radius: 99px;
+            border-radius: 50px;
+            font-size: 14px;
             font-weight: 600;
-            margin: 10px 0 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
-        .contact-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
+
+        .hero-text .bio {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.8;
         }
-        .contact-btn {
-            padding: 10px 22px;
-            border-radius: 10px;
+
+        .hero-text .bio strong {
+            color: var(--text-primary);
+        }
+
+        .hero-text .bio a {
+            color: #667eea;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
         }
-        .btn-email {
-            background: linear-gradient(135deg,#2563eb,#3b82f6);
-            color: white;
+
+        .hero-text .bio a:hover {
+            border-bottom-color: #667eea;
         }
-        .btn-cv {
-            background: linear-gradient(135deg,#8b5cf6,#a855f7);
-            color: white;
-        }
-        .btn-github {
-            background: linear-gradient(135deg,#1f2937,#4b5563);
-            color: white;
-        }
-        .contact-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-        /* 通用板块 */
-        section {
-            padding: 90px 0;
-        }
-        .section-title {
-            font-size: 30px;
-            margin-bottom: 36px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid transparent;
-            border-image: linear-gradient(90deg,#3b82f6,#a855f7) 1;
-            display: inline-block;
-        }
-        /* 玻璃卡片通用 */
-        .glass-card {
-            background: rgba(255,255,255,0.75);
-            backdrop-filter: blur(10px);
-            border-radius: 18px;
-            padding: 28px;
-            margin-bottom: 26px;
-            border: 1px solid rgba(255,255,255,0.9);
-            box-shadow: 0 4px 20px rgba(59,130,246,0.08);
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .glass-card.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .glass-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 32px rgba(59,130,246,0.14);
-        }
-        /* 研究方向网格 */
-        .interest-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-            gap: 18px;
-        }
-        .interest-item {
-            padding: 20px;
-            border-radius: 14px;
-            text-align: center;
-            color: white;
-            font-weight: 600;
-        }
-        .int1 { background: linear-gradient(135deg,#2563eb,#60a5fa); }
-        .int2 { background: linear-gradient(135deg,#7c3aed,#a855f7); }
-        .int3 { background: linear-gradient(135deg,#0891b2,#22d3ee); }
-        .int4 { background: linear-gradient(135deg,#ea580c,#fb923c); }
-        /* 工作经历时间线条目 */
-        .exp-item {
-            margin-bottom: 24px;
-            border-left: 4px solid #6366f1;
-            padding-left: 18px;
-        }
-        .exp-header {
+
+        .hero-links {
             display: flex;
-            justify-content: space-between;
+            gap: 14px;
+            margin-top: 32px;
             flex-wrap: wrap;
-            margin-bottom: 6px;
         }
-        .exp-company {
-            font-weight: bold;
-            font-size: 19px;
-        }
-        .exp-time {
-            color: #6b7280;
-            font-style: italic;
-        }
-        .exp-position {
-            color: #4f46e5;
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 600;
-            margin-bottom: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
-        /* 论文条目布局 */
-        .pub-row {
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-outline {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-outline:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Avatar */
+        .hero-avatar {
             display: flex;
-            gap: 22px;
-            flex-wrap: wrap;
-            align-items: flex-start;
-        }
-        .pub-media {
-            width: 20%;
-            min-width: 150px;
-        }
-        .media-switch {
+            justify-content: center;
             position: relative;
-            border-radius: 12px;
-            overflow: hidden;
         }
-        .media-switch img {
+
+        .avatar-wrapper {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+
+        .avatar-ring {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            animation: rotate 8s linear infinite;
+        }
+
+        .avatar-ring::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: var(--bg-light);
+            border-radius: 50%;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .avatar-img {
             position: relative;
             z-index: 2;
             width: 100%;
-            display: block;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid white;
+            box-shadow: var(--shadow-lg);
         }
-        .media-switch video {
+
+        .avatar-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-badge {
+            position: absolute;
+            bottom: 20px;
+            right: -10px;
+            background: white;
+            padding: 10px 18px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+            font-size: 13px;
+            font-weight: 600;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .avatar-badge .score {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 16px;
+        }
+
+        /* ========== Section Common ========== */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 6px 18px;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========== Research Interests ========== */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .interest-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-md);
+            padding: 28px 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .interest-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .interest-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 16px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .interest-card:nth-child(1) .interest-icon { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .interest-card:nth-child(2) .interest-icon { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .interest-card:nth-child(3) .interest-icon { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .interest-card:nth-child(4) .interest-icon { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+
+        .interest-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .interest-card p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* ========== Work Experience ========== */
+        .work-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+        }
+
+        .work-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2, #4facfe);
+            opacity: 0.3;
+        }
+
+        .work-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-left: 60px;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .work-card:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .work-card::before {
+            content: '';
+            position: absolute;
+            left: -46px;
+            top: 36px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            border: 4px solid var(--bg-light);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .work-company {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .work-date {
+            font-size: 13px;
+            color: #667eea;
+            font-weight: 600;
+            padding: 4px 14px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .work-position {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .work-location {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 14px;
+        }
+
+        .work-desc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .work-desc li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .work-desc li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .work-card {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .work-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
+        }
+
+        .work-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+        }
+
+        /* Project logo */
+        .project-logo-img {
+            max-height: 120px;
+            max-width: 80%;
+            object-fit: contain;
+            opacity: 0.95;
+        }
+
+        .project-role {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        /* ========== Publications ========== */
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .pub-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 32px;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pub-card:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .pub-media {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 1;
+            background: #f0f0f0;
+        }
+
+        .pub-media img,
+        .pub-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pub-media .static-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            transition: opacity 0.4s ease;
+        }
+
+        .pub-media .hover-video {
             position: absolute;
             top: 0;
             left: 0;
             z-index: 1;
-            width: 100%;
             opacity: 0;
-            transition: opacity 0.35s;
+            transition: opacity 0.4s ease;
         }
-        .media-switch:hover video {
+
+        .pub-card:hover .static-img {
+            opacity: 0;
+        }
+
+        .pub-card:hover .hover-video {
             opacity: 1;
         }
-        .pub-content {
-            flex: 1;
-            min-width: 300px;
-        }
-        .paper-title {
-            font-size: 19px;
-            font-weight: bold;
-            margin-bottom: 6px;
-        }
-        .paper-title a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-        .paper-title a:hover {
-            text-decoration: underline;
-        }
-        .pub-meta {
-            color: #4b5563;
-            font-style: italic;
-            margin: 6px 0 10px;
-        }
-        .tag-submit {
-            display: inline-block;
-            padding: 2px 10px;
-            background: #e0e7ff;
-            color: #2563eb;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-        .tag-pub {
-            display: inline-block;
-            padding: 2px 10px;
-            background: #dcfce7;
-            color: #16a34a;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-        /* 项目网格 */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px,1fr));
-            gap: 24px;
-        }
-        .proj-card .proj-head {
-            padding: 10px 16px;
-            border-radius: 12px 12px 0 0;
-            margin: -28px -28px 20px -28px;
-            color: white;
+
+        .pub-status {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 3;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
             font-weight: 600;
         }
-        .proj1 { background: linear-gradient(90deg,#2563eb,#60a5fa); }
-        .proj2 { background: linear-gradient(90deg,#7c3aed,#a855f7); }
-        .proj3 { background: linear-gradient(90deg,#0891b2,#22d3ee); }
-        .proj4 { background: linear-gradient(90deg,#ea580c,#fb923c); }
-        /* 奖项左侧色条 */
-        .award-row {
-            display: flex;
-            gap: 20px;
-            margin: 28px 0;
+
+        .status-submitting {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
         }
-        .award-color-bar {
-            width: 8px;
-            border-radius: 99px;
-            flex-shrink: 0;
+
+        .status-published {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            color: white;
         }
-        .bar1 { background: linear-gradient(#ef4444,#f87171); }
-        .bar2 { background: linear-gradient(#2563eb,#60a5fa); }
-        .bar3 { background: linear-gradient(#7c3aed,#a855f7); }
-        /* 课外活动彩色渐变标签 */
-        .activity-row {
+
+        .pub-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .pub-content h3 a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .pub-content h3 a:hover {
+            color: #667eea;
+        }
+
+        .pub-authors {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .pub-authors strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .pub-venue {
+            font-size: 13px;
+            color: #667eea;
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+
+        .pub-abstract {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== Projects ========== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            height: 180px;
+            background: var(--primary-gradient);
+            position: relative;
+            overflow: hidden;
             display: flex;
-            gap: 20px;
-            margin: 26px 0;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card:nth-child(1) .project-image { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .project-card:nth-child(2) .project-image { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .project-card:nth-child(3) .project-image { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .project-card:nth-child(4) .project-image { background: linear-gradient(135deg, #fa709a, #fee140); }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .project-image .project-icon {
+            font-size: 48px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .project-body {
+            padding: 24px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
             flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 4px 12px;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .project-body h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .project-tutor {
+            font-size: 13px;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .project-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== Awards ========== */
+        .awards-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .major-awards {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .major-award-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            display: flex;
+            gap: 24px;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .major-award-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-gradient);
+        }
+
+        .major-award-card:hover {
+            transform: translateX(6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .award-rank {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .major-award-card:nth-child(1) .award-rank { background: linear-gradient(135deg, #f5af19, #f12711); }
+        .major-award-card:nth-child(2) .award-rank { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .major-award-card:nth-child(3) .award-rank { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+
+        .award-info h4 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .award-info .award-level {
+            font-size: 13px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .award-info p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Other Awards */
+        .other-awards-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            height: fit-content;
+        }
+
+        .other-awards-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .other-awards-card h3::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .award-item {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .award-item:last-child {
+            border-bottom: none;
+        }
+
+        .award-item:hover {
+            padding-left: 10px;
+        }
+
+        .award-item .award-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .award-item .award-name a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .award-item .award-name a:hover {
+            color: #667eea;
+        }
+
+        .award-item .award-holders {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* ========== Scholarship ========== */
+        .scholarship-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .scholarship-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            gap: 18px;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+            align-items: flex-start;
+        }
+
+        .scholarship-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .scholarship-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .scholarship-info h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .scholarship-info h4 a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .scholarship-info h4 a:hover {
+            color: #667eea;
+        }
+
+        .scholarship-info p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* ========== Activities ========== */
+        .activities-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .activity-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 32px;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
             align-items: center;
         }
+
+        .activity-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
         .activity-label {
-            width: 20%;
-            min-width: 170px;
             text-align: center;
-        }
-        .grad-tag1 {
-            padding: 14px 8px;
-            border-radius: 14px;
-            background: linear-gradient(135deg,#ffd3a8,#fcb97d);
-        }
-        .grad-tag2 {
-            padding: 14px 8px;
-            border-radius: 14px;
-            background: linear-gradient(135deg,#c2d0b8,#aaba9e);
-        }
-        .grad-tag3 {
-            padding: 14px 8px;
-            border-radius: 14px;
-            background: linear-gradient(135deg,#f9e8b0,#edd892);
-        }
-        /* 底部深色footer */
-        footer {
-            background: linear-gradient(135deg,#1e293b,#334155);
+            padding: 20px;
+            border-radius: var(--radius-md);
             color: white;
-            text-align: center;
-            padding: 40px 20px;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .activity-card:nth-child(1) .activity-label { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .activity-card:nth-child(2) .activity-label { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .activity-card:nth-child(3) .activity-label { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+
+        .activity-content h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .activity-content h4 a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .activity-content h4 a:hover {
+            color: #667eea;
+        }
+
+        .activity-content .activity-date {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .activity-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .activity-content .highlight {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 14px;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ========== Footer ========== */
+        footer {
+            background: var(--dark-gradient);
+            color: white;
+            padding: 60px 0 40px;
             margin-top: 60px;
         }
-        footer a {
-            color: #93c5fd;
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-content h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .footer-content .footer-sub {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .footer-links a:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-4px);
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ========== Scroll Animation ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 42px;
+            }
+
+            .hero-links {
+                justify-content: center;
+            }
+
+            .avatar-wrapper {
+                width: 260px;
+                height: 260px;
+            }
+
+            .interests-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pub-card {
+                grid-template-columns: 1fr;
+            }
+
+            .pub-media {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .awards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .scholarship-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .activity-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .navbar {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 0;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 流动背景光斑 -->
-    <div class="bg-blob blob1"></div>
-    <div class="bg-blob blob2"></div>
-    <div class="bg-blob blob3"></div>
-
-    <!-- 顶部导航（新增Work入口） -->
-    <nav>
-        <a href="#about">About</a>
-        <a href="#interest">Interests</a>
-        <a href="#work">Work Exp</a>
-        <a href="#pub">Publications</a>
-        <a href="#project">Projects</a>
-        <a href="#award">Awards</a>
-        <a href="#activity">Activities</a>
-    </nav>
-
-    <div class="container">
-        <!-- Hero 首屏 About -->
-        <section id="about" class="hero">
-            <div class="hero-wrap">
-                <div class="hero-text">
-                    <h1 class="hero-name">Donghao Cao</h1>
-                    <p class="hero-desc">Mechanical Engineering Student at <a href="https://english.buct.edu.cn/9702/list3.htm" style="color:#2563eb;text-decoration:none;">BUCT</a>, Beijing, China. Completed a 3-week internship at <a href="http://www.luohuagroup.com.cn/company/21.html" style="color:#2563eb;text-decoration:none;">Luohuagroup</a>.</p>
-                    <p class="hero-desc">Overall GPA: <span class="gpa-badge">90.43 / 100</span></p>
-                    <p class="hero-desc">Focused on academic research, engineering projects and interdisciplinary competitions, collaborated with numerous supervisors and peers.</p>
-                    <div class="contact-buttons">
-                        <a href="mailto:15090175382@163.com" class="contact-btn btn-email">Email</a>
-                        <a href="data/Donghao Cao_CV.pdf" class="contact-btn btn-cv">Full CV</a>
-                        <a href="https://github.com/CDHSPACE/" class="contact-btn btn-github">GitHub</a>
-                    </div>
-                </div>
-                <div class="hero-avatar-box">
-                    <div class="avatar-ring">
-                        <img src="images/Donghao.jpg" alt="Donghao Cao profile">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 研究方向 & 奖学金 -->
-        <section id="interest">
-            <h2 class="section-title">Research Interests</h2>
-            <div class="glass-card">
-                <div class="interest-grid">
-                    <div class="interest-item int1">Computer Vision</div>
-                    <div class="interest-item int2">Robotics</div>
-                    <div class="interest-item int3">Control Engineering</div>
-                    <div class="interest-item int4">Mathematical Modelling</div>
-                </div>
-            </div>
-
-            <h2 class="section-title" style="margin-top:60px;">Scholarships</h2>
-            <div class="glass-card">
-                <div style="margin:12px 0;">
-                    <a href="data/National.pdf" style="color:#2563eb;text-decoration:none;">1. National Scholarship, Ministry of Education of P.R.China</a>
-                </div>
-                <div style="margin:12px 0;">
-                    <a href="data/newscholarship.pdf" style="color:#2563eb;text-decoration:none;">2. New Oriental Vision Overseas Scholarship</a>
-                </div>
-                <div style="margin:12px 0;">
-                    <a href="data/BUCTscholarship.pdf" style="color:#2563eb;text-decoration:none;">3. BUCT First Prize Scholarship</a>
-                </div>
-                <div style="margin:12px 0;">
-                    4. Quality Development Scholarship (Contest Outstanding Performance)
-                </div>
-            </div>
-        </section>
-
-        <!-- 【新增独立板块】Work Experience 工作/实习经历 -->
-        <section id="work">
-            <h2 class="section-title">Work Experience</h2>
-            <div class="glass-card">
-                <!-- 清华机电所 科研助理 -->
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <span class="exp-company">Institute of Mechanical and Electronic Engineering, Tsinghua University</span>
-                        <span class="exp-time">Sept.2024 – April 2025</span>
-                    </div>
-                    <div class="exp-position">Research Assistant</div>
-                    <p>Implemented Smith predictor-sliding mode control with PSO algorithm on Panasonic A5 electric cylinder system using dSPACE platform, significantly reducing overshoot and settling time. Tested the operating voltage range of the electric cylinder, optimized its tracking performance, and reduced the delay to 0.2 seconds.</p>
-                </div>
-                <!-- 英格索兰研发实习 -->
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <span class="exp-company">Ingersoll-Rand (China) Industrial Equipment Manufacturing Co.,Ltd</span>
-                        <span class="exp-time">Oct.2025 – Feb.2026</span>
-                    </div>
-                    <div class="exp-position">Product R&D Intern</div>
-                    <p>Assisted engineers with product prototype research, system identification and control system design to match various equipment parameter standards. Tracked R&D progress, communicated technical requirements, sorted out development faults and reported hidden technical risks to product supervisors.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 论文 Publications -->
-        <section id="pub">
-            <h2 class="section-title">Publications</h2>
-            <!-- 论文1 -->
-            <div class="glass-card pub-row">
-                <div class="pub-media">
-                    <div class="media-switch">
-                        <img src="images/tea.png" alt="tea detection">
-                        <video muted autoplay loop width="100%">
-                            <source src="images/r2r.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
-                <div class="pub-content">
-                    <span class="paper-title">
-                        <a href="https://www.authorea.com/1287797">YOLOv8-SIEMF: A Visual Model Based on Sub-models Integral Evaluation and Muti-objective Filter</a>
-                    </span>
-                    <div><strong>Donghao Cao</strong>, Fuchen Huang, Zhengxuan Wei, Jingyi Zhu, Jingsi Lyu</div>
-                    <div class="pub-meta"><span class="tag-submit">Submitting</span></div>
-                    <p>To address missed detection and misdetection in tea bud recognition under complex environments, this work proposes YOLOv8-SIEMF with hierarchical sub-model fusion and multi-objective filtering. Experiments on self-built tea dataset outperform mainstream YOLOv8 variants on precision and recall.</p>
-                </div>
-            </div>
-            <!-- 论文2 -->
-            <div class="glass-card pub-row">
-                <div class="pub-media">
-                    <div class="media-switch">
-                        <img src="images/r2r.png" alt="assembly helix model">
-                        <video muted autoplay loop width="100%">
-                            <source src="images/r2r.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
-                <div class="pub-content">
-                    <span class="paper-title">
-                        <a href="https://ieeexplore.ieee.org/document/10859870">The Position Visualization Modeling of Mechanical Product Assembly Line Based on Equidistant Helix</a>
-                    </span>
-                    <div><strong>Donghao Cao</strong>, Fuchen Huang, Ziyi Wang, Kui Duanmu</div>
-                    <div class="pub-meta"><span class="tag-pub">AIVRV 2024</span></div>
-                    <p>A recursive position-velocity model based on equidistant helix and cosine rule to simulate continuous mechanical product flow on assembly lines.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 学术项目 -->
-        <section id="project">
-            <h2 class="section-title">Academic Projects</h2>
-            <div class="project-grid">
-                <!-- 项目1 -->
-                <div class="glass-card proj-card">
-                    <div class="proj-head proj1">Dual-DOF PSO-Smith Predictive Controller</div>
-                    <img src="images/Control.png" style="width:100%;border-radius:10px;margin-bottom:14px;">
-                    <p style="font-style:italic;color:#444;">Tutor: Researcher Ze Wang, Tsinghua University</p>
-                    <p>Optimize sliding mode control response via PSO on dSPACE platform, improve dead-time compensation of Smith predictor.</p>
-                </div>
-                <!-- 项目2 -->
-                <div class="glass-card proj-card">
-                    <div class="proj-head proj2">Classical & Deep Learning Object Detection</div>
-                    <img src="images/Sliding.png" style="width:100%;border-radius:10px;margin-bottom:14px;">
-                    <p style="font-style:italic;color:#444;">Tutor: Dr. Abhishek Dutta, VGG Oxford | 2025.02–05</p>
-                    <p>Implemented handcrafted sliding window detectors and CNN-based detection pipelines, mastered model evaluation metrics.</p>
-                </div>
-                <!-- 项目3 -->
-                <div class="glass-card proj-card">
-                    <div class="proj-head proj3">STM32 Mobile Plant Growth Measuring Device</div>
-                    <img src="images/SproutCup.png" style="width:100%;border-radius:10px;margin-bottom:14px;">
-                    <p style="font-style:italic;color:#444;">Tutor: Prof. Liang Yin, BUCT | 2023.03–12</p>
-                    <p>Team leader, designed remote control & sensor extension mechanism; ranked 6th in university top-tier tech contest.</p>
-                </div>
-                <!-- 项目4 -->
-                <div class="glass-card proj-card">
-                    <div class="proj-head proj4">Terraced Tea Autonomous Harvest RobotCar</div>
-                    <img src="images/Innovation.png" style="width:100%;border-radius:10px;margin-bottom:14px;">
-                    <p style="font-style:italic;color:#444;">Tutor: Lecturer Yang Yuan, BUCT | 2024.04–2025.10 (Expected)</p>
-                    <p>YOLOv8 tea bud recognition + selective picking manipulator to realize low-cost intelligent tea harvesting.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 奖项 -->
-        <section id="award">
-            <h2 class="section-title">Main Academic Awards</h2>
-            <!-- Robocup -->
-            <div class="glass-card award-row">
-                <div class="award-color-bar bar1"></div>
-                <div>
-                    <h3>Robocup@home 2025 National 1st Prize</h3>
-                    <p>Vision team lead, applied YOLOv8 model distillation to reduce labeling cost, supported robot navigation & domestic service tasks.</p>
-                </div>
-            </div>
-            <!-- ICM -->
-            <div class="glass-card award-row">
-                <div class="award-color-bar bar2"></div>
-                <div>
-                    <h3>ICM 2024 Honorable Mention</h3>
-                    <p>Built IPM, PI, ACV models with TOPSIS & ArcGIS for natural disaster insurance risk assessment.</p>
-                </div>
-            </div>
-            <!-- CUMCM -->
-            <div class="glass-card award-row">
-                <div class="award-color-bar bar3"></div>
-                <div>
-                    <h3>CUMCM Beijing First Prize 2024</h3>
-                    <p>Equidistant spiral recursion model to optimize dragon dance procession speed & avoid collision.</p>
-                </div>
-            </div>
-
-            <h2 class="section-title" style="margin-top:60px;">Other Awards</h2>
-            <div class="glass-card">
-                <div style="margin:10px 0;"><a href="data/GCS.pdf" style="color:#2563eb;">· China Engineering Innovation Competition, Beijing 2nd Prize</a></div>
-                <div style="margin:10px 0;"><a href="data/MYB.pdf" style="color:#2563eb;">· BUCT Sprout Cup Physical Production Track Champion</a></div>
-                <div style="margin:10px 0;"><a href="data/Lanqiaopython.pdf" style="color:#2563eb;">· Lanqiao Cup Python Group, Beijing 2nd Prize</a></div>
-                <div style="margin:10px 0;"><a href="data/RC.pdf" style="color:#2563eb;">· RAICOM Four-legged Robot, Beijing 3rd Prize</a></div>
-                <div style="margin:10px 0;"><a href="data/WLSY.pdf" style="color:#2563eb;">· National Excellent Award, Physics Experiment Contest</a></div>
-                <div style="margin:10px 0;"><a href="data/YY.pdf" style="color:#2563eb;">· FLTRP ETIC Cup Silver Award (School Level)</a></div>
-            </div>
-        </section>
-
-        <!-- 课外实践 -->
-        <section id="activity">
-            <h2 class="section-title">Co-curricular Activities</h2>
-            <div class="glass-card activity-row">
-                <div class="activity-label">
-                    <div class="grad-tag1">
-                        <h3><a href="https://www.oxford-prospects.org/" style="color:#111;text-decoration:none;">Oxford Prospects Programmes</a></h3>
-                    </div>
-                </div>
-                <div>
-                    <p>July 2024 | STEM Frontier Science Module</p>
-                    <p><a href="data/Oxford Certificate.pdf" style="color:#2563eb;font-weight:bold;">Grade A+ Outstanding Student Certificate</a></p>
-                    <p>Self-directed short film: <a href="https://www.bilibili.com/video/BV14WYZeEE5g/" style="color:#2563eb;">He is coming!!</a> (Director: Donghao Cao)</p>
-                </div>
-            </div>
-            <div class="glass-card activity-row">
-                <div class="activity-label">
-                    <div class="grad-tag2">
-                        <h3>Student Union</h3>
-                    </div>
-                </div>
-                <div>
-                    <p><a href="images/SIELEARN.jpg" style="color:#2563eb;">Minister, Academic Science & Technology Dept. 2023.09–2024.07</a></p>
-                    <p>Organized peer tutoring sessions for students with academic difficulties.</p>
-                </div>
-            </div>
-            <div class="glass-card activity-row">
-                <div class="activity-label">
-                    <div class="grad-tag3">
-                        <h3>Winter Vacation Publicity</h3>
-                    </div>
-                <div>
-                    <p>Led hometown college entrance exam tutoring team.</p>
-                    <p>Team awarded <a href="data/Winteract.pdf" style="color:#2563eb;">1st Prize</a> for excellent volunteer performance.</p>
-                </div>
-            </div>
-        </section>
+    <!-- Background Decoration -->
+    <div class="bg-decoration">
+        <div class="bg-blob blob-1"></div>
+        <div class="bg-blob blob-2"></div>
+        <div class="bg-blob blob-3"></div>
     </div>
 
-    <!-- 底部 -->
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#awards">Awards</a>
+        <a href="#activities">Activities</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <p class="greeting">👋 Hello, I'm</p>
+                    <h1>Donghao Cao</h1>
+                    <span class="title-tag">Mechanical Engineering · AI · Robotics</span>
+                    <p class="bio">
+                        I'm a student majoring in <strong>Mechanical Engineering</strong> at
+                        <a href="https://english.buct.edu.cn/9702/list3.htm">BUCT (Beijing University of Chemical Technology)</a> in Beijing, China.
+                    </p>
+                    <p class="bio">
+                        With an average score of <strong>90.43/100</strong>, I combine solid engineering fundamentals with cutting-edge AI research.
+                        I've participated in numerous projects, collaborating with tutors and peers across computer vision, robotics, and control engineering.
+                    </p>
+                    <div class="hero-links">
+                        <a href="mailto:15090175382@163.com" class="btn btn-primary">📧 Email Me</a>
+                        <a href="data/Donghao Cao_CV.pdf" class="btn btn-outline">📄 Download CV</a>
+                        <a href="https://github.com/CDHSPACE/" class="btn btn-outline">💻 GitHub</a>
+                    </div>
+                </div>
+                <div class="hero-avatar fade-in">
+                    <div class="avatar-wrapper">
+                        <div class="avatar-ring"></div>
+                        <div class="avatar-img">
+                            <a href="images/Donghao.jpg">
+                                <img src="images/Donghao.jpg" alt="Donghao Cao">
+                            </a>
+                        </div>
+                        <div class="avatar-badge">
+                            GPA <span class="score">90.43</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section id="interests">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Research Focus</span>
+                <h2 class="section-title">Research Interests</h2>
+                <p class="section-subtitle">Bridging mechanical engineering with artificial intelligence</p>
+            </div>
+            <div class="interests-grid">
+                <div class="interest-card fade-in">
+                    <div class="interest-icon">👁️</div>
+                    <h4>Computer Vision</h4>
+                    <p>Object detection, YOLO variants, model distillation</p>
+                </div>
+                <div class="interest-card fade-in">
+                    <div class="interest-icon">🤖</div>
+                    <h4>Robotics</h4>
+                    <p>Autonomous systems, manipulator control, navigation</p>
+                </div>
+                <div class="interest-card fade-in">
+                    <div class="interest-icon">🎛️</div>
+                    <h4>Control Engineering</h4>
+                    <p>PSO optimization, Smith prediction, sliding mode control</p>
+                </div>
+                <div class="interest-card fade-in">
+                    <div class="interest-icon">📐</div>
+                    <h4>Mathematical Modeling</h4>
+                    <p>Optimization algorithms, simulation, data analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section id="work">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Career Experience</span>
+                <h2 class="section-title">Work Experience</h2>
+                <p class="section-subtitle">Research and industry internships in control engineering & product R&D</p>
+            </div>
+            <div class="work-timeline">
+                <!-- Work 1: Tsinghua University -->
+                <div class="work-card fade-in">
+                    <div class="work-logo">
+                        <img src="images/tsinghua-logo.png" alt="Tsinghua University">
+                    </div>
+                    <div class="work-content">
+                        <div class="work-header">
+                            <h3 class="work-company">Institute of Mechanical and Electronic Engineering, Tsinghua University</h3>
+                            <span class="work-date">Sept. 2024 – April 2025</span>
+                        </div>
+                        <p class="work-position">Research Assistant</p>
+                        <p class="work-location">📍 Beijing, China</p>
+                        <div class="work-desc">
+                            <ul>
+                                <li>Implemented Smith predictor-sliding mode control with PSO algorithm on Panasonic A5 electric cylinder system using dSPACE platform, significantly reducing overshoot and settling time</li>
+                                <li>Tested the operating voltage range of the electric cylinder, optimized its tracking performance, and reduced the delay to 0.2 seconds</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work 2: Ingersoll-Rand -->
+                <div class="work-card fade-in">
+                    <div class="work-logo">
+                        <img src="images/ingersoll-rand-logo.png" alt="Ingersoll-Rand">
+                    </div>
+                    <div class="work-content">
+                        <div class="work-header">
+                            <h3 class="work-company">Ingersoll-Rand (China) Industrial Equipment Manufacturing Co., Ltd.</h3>
+                            <span class="work-date">Oct. 2025 – Feb. 2026</span>
+                        </div>
+                        <p class="work-position">Product R&D Intern</p>
+                        <p class="work-location">📍 Wujiang, China</p>
+                        <div class="work-desc">
+                            <ul>
+                                <li>Assisted engineers with product prototype research, system identification and control system design to match various equipment parameter standards</li>
+                                <li>Tracked R&D progress, communicated technical requirements, sorted out development faults and reported hidden technical risks to product supervisors</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Projects -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Hands-on Experience</span>
+                <h2 class="section-title">Academic Projects</h2>
+                <p class="section-subtitle">Led and contributed to diverse engineering research projects</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1: RoboCup Home Service Robot -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="images/robocup-logo.png" alt="RoboCup Project" class="project-logo-img">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="tag">YOLOv8</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Model Compression</span>
+                        </div>
+                        <h3>RoboCup Home Service Robot Vision System</h3>
+                        <p class="project-role">Vision Team Leader & Hardware Engineer · Mar. 2025 – May 2025</p>
+                        <p class="project-desc">
+                            Modeled general household scenarios and accomplished a series of motion tasks including guest identification and object handling. Won National First Prize in RoboCup China leading computer vision development with YOLOv8 model compression, maintaining 94% object detection accuracy for autonomous household tasks.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 2: Terraced Tea Harvest Robot -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="images/tea-robot-logo.png" alt="Tea Harvest Robot" class="project-logo-img">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="tag">YOLOv8</span>
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Agriculture AI</span>
+                            <span class="tag">3D Modeling</span>
+                        </div>
+                        <h3>Terraced Tea Autonomous Harvest RobotCar</h3>
+                        <p class="project-role">Project Leader · Mar. 2024 – Oct. 2025 · National Innovation Program</p>
+                        <p class="project-desc">
+                            Developed intelligent tea bud picking system using improved Mamba-YOLOv8 vision model with custom dataset for crop recognition. Designed collaborative robotic arm end-effector, and conducted 3D terrain modeling for complex agricultural terrains. Long-term collaborated with Universiti Teknologi Malaysia faculty and students.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 3: Oxford Object Detection -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="images/oxford-logo.png" alt="Oxford Project" class="project-logo-img">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Oxford</span>
+                        </div>
+                        <h3>Classical & Deep Learning Object Detection</h3>
+                        <p class="project-role">Feb. 2025 – May 2025 · University of Oxford</p>
+                        <p class="project-desc">
+                            Project-based course covering sliding window detectors with hand-crafted features and CNN-based deep learning methods. Implemented detection of people, furniture, and everyday items with evaluation metrics on train/val/test sets.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Academic Output</span>
+                <h2 class="section-title">Publications</h2>
+                <p class="section-subtitle">Peer-reviewed papers and ongoing research</p>
+            </div>
+            <div class="pub-list">
+                <!-- Paper 1 -->
+                <div class="pub-card fade-in">
+                    <div class="pub-media">
+                        <span class="pub-status status-submitting">Submitting</span>
+                        <img class="static-img" src="images/tea.png" alt="tea bud detection">
+                        <video class="hover-video" muted autoplay loop playsinline>
+                            <source src="images/r2r.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="pub-content">
+                        <h3><a href="https://www.authorea.com/1287797">YOLOv8-SIEMF: A Visual Model Based on Sub-models Integral Evaluation and Multi-objective Filter</a></h3>
+                        <p class="pub-authors"><strong>Donghao Cao</strong>, Fuchen Huang, Zhengxuan Wei, Jingyi Zhu, Jingsi Lyu</p>
+                        <p class="pub-venue">Under Review</p>
+                        <p class="pub-abstract">
+                            To address missed detection and misdetection in tea bud recognition under complex environments, this paper proposes YOLOv8-SIEMF, integrating Sub-models Integral Evaluation (SIE) and Multi-objective Filtering (MF). A hierarchical detection framework processes diverse resolution inputs, while an evaluation mechanism fuses sub-model outputs by confidence, box overlap, and image sharpness. The multi-objective filtering module enhances sensitivity to multi-target clusters, reducing redundant detection. Experiments on a self-built dataset demonstrate superior precision and recall over mainstream YOLOv8 variants.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Paper 2 -->
+                <div class="pub-card fade-in">
+                    <div class="pub-media">
+                        <span class="pub-status status-published">Published</span>
+                        <img class="static-img" src="images/r2r.png" alt="assembly helix model">
+                        <video class="hover-video" muted autoplay loop playsinline>
+                            <source src="images/r2r.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="pub-content">
+                        <h3><a href="#">The Position Visualization Modeling of Mechanical Product Assembly Line Based on Equidistant Helix</a></h3>
+                        <p class="pub-authors"><strong>Donghao Cao</strong>, Fuchen Huang, Ziyi Wang, Kui Duanmu</p>
+                        <p class="pub-venue">AIVRV, 2024</p>
+                        <p class="pub-abstract">
+                            This study presents a uniformly spaced recursive model to determine position and velocity of mechanical products at various locations and time intervals on an assembly line. Assuming constant speed, initial product positions are calculated by arc length at different intervals. A node position model based on the Cosine Rule recursively determines the front handle center of each subsequent product relative to the preceding product's rear handle center, enabling precise visualization and optimization of assembly line dynamics.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Scholarships -->
+    <section id="awards">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Recognition</span>
+                <h2 class="section-title">Awards & Honors</h2>
+                <p class="section-subtitle">National and international competition achievements</p>
+            </div>
+
+            <!-- Scholarships -->
+            <div style="margin-bottom: 60px;">
+                <h3 style="font-size: 22px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px;" class="fade-in">
+                    <span style="font-size: 28px;">🏆</span> Scholarships
+                </h3>
+                <div class="scholarship-grid">
+                    <div class="scholarship-card fade-in">
+                        <div class="scholarship-icon">🥇</div>
+                        <div class="scholarship-info">
+                            <h4><a href="data/National.pdf">National Scholarship</a></h4>
+                            <p>Ministry of Education of the People's Republic of China</p>
+                        </div>
+                    </div>
+                    <div class="scholarship-card fade-in">
+                        <div class="scholarship-icon">🎓</div>
+                        <div class="scholarship-info">
+                            <h4><a href="data/newscholarship.pdf">New Oriental Vision Overseas Scholarship</a></h4>
+                            <p>Beijing Xindongfang Vision Overseas Consulting Co., Ltd.</p>
+                        </div>
+                    </div>
+                    <div class="scholarship-card fade-in">
+                        <div class="scholarship-icon">📚</div>
+                        <div class="scholarship-info">
+                            <h4><a href="data/BUCTscholarship.pdf">BUCT First Prize Scholarship</a></h4>
+                            <p>Beijing University of Chemical Technology</p>
+                        </div>
+                    </div>
+                    <div class="scholarship-card fade-in">
+                        <div class="scholarship-icon">⭐</div>
+                        <div class="scholarship-info">
+                            <h4>Quality Development Scholarship</h4>
+                            <p>For outstanding performance in contests · BUCT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Awards -->
+            <div class="awards-container">
+                <div class="major-awards">
+                    <h3 style="font-size: 22px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px;" class="fade-in">
+                        <span style="font-size: 28px;">🏅</span> Major Awards
+                    </h3>
+
+                    <div class="major-award-card fade-in">
+                        <div class="award-rank">1st</div>
+                        <div class="award-info">
+                            <h4>RoboCup@Home 2025</h4>
+                            <p class="award-level">National 1st Prize</p>
+                            <p>Vision team leader — applied model distillation to YOLOv8, reducing manual annotation needs and achieving background-invariant models for mapping, navigation, and computer vision domestic tasks.</p>
+                        </div>
+                    </div>
+
+                    <div class="major-award-card fade-in">
+                        <div class="award-rank">HM</div>
+                        <div class="award-info">
+                            <h4>ICM 2024 (USA)</h4>
+                            <p class="award-level">Honorable Mention · Interdisciplinary Modeling Contest</p>
+                            <p>Built Insurance Provision Model, Protection Index, and Architecture Construction Value models using prediction, break-even analysis, combined weight analysis, TOPSIS, and ArcGIS location analysis.</p>
+                        </div>
+                    </div>
+
+                    <div class="major-award-card fade-in">
+                        <div class="award-rank">1st</div>
+                        <div class="award-info">
+                            <h4>CUMCM 2024</h4>
+                            <p class="award-level">Beijing Municipality 1st Prize</p>
+                            <p>Optimized Bench Dragon procession position and speed parameters using recursive and visualization models, improving team coordination and avoiding collisions in equidistant spiral formations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="other-awards-card fade-in">
+                    <h3>Other Awards</h3>
+                    <div class="award-item">
+                        <div class="award-name"><a href="#">China Engineering Practice & Innovation Competition</a></div>
+                        <div class="award-holders">Beijing Municipal 2nd Prize · Ziyi Wang, Yuqing Qing, Donghao Cao, Shensi Tian</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-name"><a href="#">BUCT Sprout Cup — Physical Production</a></div>
+                        <div class="award-holders">University 1st Place</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-name"><a href="#">Lanqiao Cup Python — Key Universities Group</a></div>
+                        <div class="award-holders">Beijing Municipal 2nd Prize · Donghao Cao, Fuchen Huang, Ziyi Wang, et al.</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-name"><a href="#">RAICOM Four-legged Collaborative — Undergraduate</a></div>
+                        <div class="award-holders">Beijing Provincial 3rd Prize · Donghao Cao, Fuchen Huang, Ziyi Wang, et al.</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-name"><a href="#">Physics Experiment Competition</a></div>
+                        <div class="award-holders">National Excellent Award · XingPeng Bao, Donghao Cao, Fuchen Huang</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-name"><a href="#">FLTRP·ETIC Cup — Understanding Contemporary China</a></div>
+                        <div class="award-holders">Silver Award at School Level · Individual Award</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Co-curricular Activities -->
+    <section id="activities">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Beyond Academics</span>
+                <h2 class="section-title">Co-curricular Activities</h2>
+                <p class="section-subtitle">Leadership, outreach, and international programs</p>
+            </div>
+            <div class="activities-list">
+                <div class="activity-card fade-in">
+                    <div class="activity-label">
+                        Oxford<br>Prospects
+                    </div>
+                    <div class="activity-content">
+                        <h4><a href="https://www.oxfordprospectsprogrammes.com/">Oxford Prospects Programmes — STEM Module</a></h4>
+                        <p class="activity-date">July 2024</p>
+                        <p>Frontier Sciences module covering Mathematics, Physics, Computer Science, and Engineering.</p>
+                        <span class="highlight">🏆 Grade A+ (Top Student)</span>
+                        <p style="margin-top: 10px; font-size: 13px; font-style: italic;">
+                            Also directed a short film: <a href="#" style="color: #667eea; font-weight: 600;">"He is coming!!"</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="activity-card fade-in">
+                    <div class="activity-label">
+                        Student<br>Union
+                    </div>
+                    <div class="activity-content">
+                        <h4><a href="#">Faculty Official Student Union — Minister of Academic Science & Technology</a></h4>
+                        <p class="activity-date">2023.09 — 2024.07</p>
+                        <p>Head of the lecturer group, arranging peer tutoring sessions for students struggling with coursework. Organized academic events and coordinated with faculty members to support student learning.</p>
+                    </div>
+                </div>
+
+                <div class="activity-card fade-in">
+                    <div class="activity-label">
+                        Winter<br>Outreach
+                    </div>
+                    <div class="activity-content">
+                        <h4>Winter Vacation Popularization & College Publicity Activity</h4>
+                        <p class="activity-date">Team Leader</p>
+                        <p>Led a team back to hometown to teach high school students how to prepare for the College Entrance Examination (Gaokao), and showcased college life experiences. Team won <strong>1st Prize</strong> for outstanding performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>Donghao Cao Academic Homepage</p>
-        <p style="margin-top:8px;">Contact: <a href="mailto:15090175382@163.com">15090175382@163.com</a></p>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Let's Connect</h3>
+                <p class="footer-subtitle">Open to research collaborations and opportunities</p>
+                <div class="footer-links">
+                    <a href="mailto:15090175382@163.com" title="Email">📧</a>
+                    <a href="https://github.com/CDHSPACE/" title="GitHub">💻</a>
+                    <a href="data/Donghao Cao_CV.pdf" title="CV">📄</a>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 Donghao Cao. All rights reserved.
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <!-- 滚动渐入JS -->
     <script>
-        const cards = document.querySelectorAll('.glass-card');
+        // Scroll fade-in animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(item => {
-                if(item.isIntersecting) item.target.classList.add('show');
-            })
-        }, {threshold:0.12});
-        cards.forEach(c => observer.observe(c));
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stagger animation for grid items
+        document.querySelectorAll('.interests-grid .interest-card, .projects-grid .project-card, .scholarship-grid .scholarship-card').forEach((el, index) => {
+            el.style.transitionDelay = `${index * 0.1}s`;
+        });
     </script>
 </body>
 </html>
-
